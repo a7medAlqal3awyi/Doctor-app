@@ -1,4 +1,5 @@
 import 'package:dooc_app/core/helpers/exetention.dart';
+import 'package:dooc_app/core/helpers/spacing.dart';
 import 'package:dooc_app/feature/onboarding/widgets/doc_logo_and_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,11 +22,13 @@ class OnBoardingScreen extends StatelessWidget {
             padding: EdgeInsets.only(top: 30.h),
             child: Column(
               children: [
+                verticalSpacing(30),
+
                 const DocLogoAndName(),
-                SizedBox(
-                  height: 30.h,
-                ),
+                verticalSpacing(30),
                 const DocImageAndText(),
+                verticalSpacing(20),
+
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30.w),
                   child: Column(
@@ -35,7 +38,7 @@ class OnBoardingScreen extends StatelessWidget {
                         "Manage and schedule all of your medical appointments easily with Docdoc to get a new experience.",
                         style: TextStyles.font14GreyW400,
                       ),
-                      SizedBox(height: 30.h),
+                      verticalSpacing(40),
                       GetStartedButton(
                         onTap: () {
                           context.pushNamed(Routes.loginScreen);

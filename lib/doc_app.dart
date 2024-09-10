@@ -7,6 +7,8 @@ import 'core/routing/routes.dart';
 import 'core/service/remote_services/service_locator.dart';
 import 'feature/auth/login/data/repo/login_repo_impl.dart';
 import 'feature/auth/login/logic/login_cubit.dart';
+import 'feature/auth/sign_up/data/repo/register_repo_impl.dart';
+import 'feature/auth/sign_up/logic/register_cubit.dart';
 
 class DocApp extends StatelessWidget {
   const DocApp({super.key, required this.appRouter});
@@ -21,8 +23,10 @@ class DocApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-          create: (context)=> LoginCubit(getIt.get<LoginRepoImpl>())),
-
+              create: (context) => LoginCubit(getIt.get<LoginRepoImpl>())),
+          BlocProvider(
+              create: (context) =>
+                  RegisterCubit(getIt.get<RegisterRepoImpl>())),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

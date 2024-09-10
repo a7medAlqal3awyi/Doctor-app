@@ -3,13 +3,13 @@ import 'package:dooc_app/core/widget/toast.dart';
 import 'package:dooc_app/feature/auth/login/logic/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/themeing/styles.dart';
 import '../../../../../core/widget/app_button.dart';
 import '../../../../../core/widget/app_text_form_field.dart';
+import '../../../../../core/widget/password_validation.dart';
 
 class EmailAndPassword extends StatefulWidget {
   const EmailAndPassword({super.key});
@@ -20,12 +20,6 @@ class EmailAndPassword extends StatefulWidget {
 
 class _EmailAndPasswordState extends State<EmailAndPassword> {
   bool isObscureText = true;
-
-  bool hasLowerCase = false;
-  bool hasUpperCase = false;
-  bool hasSpecialCharacter = false;
-  bool hasNumber = false;
-  bool hasMinimumLength = false;
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -78,21 +72,8 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
                 isSecureText: isObscureText,
               ),
               verticalSpacing(24),
-              FlutterPwValidator(
-                controller: passwordController,
-                minLength: 6,
-                uppercaseCharCount: 2,
-                lowercaseCharCount:6,
-                numericCharCount: 2,
-                specialCharCount: 1,
-                width: 400,
-                height: 200,
-                onSuccess: () {
-                  toast(text: "Password is matched", color: Colors.green);
-                },
-                onFail: () {
-                  print("NOT MATCHED");
-                },
+              PasswordValidation(
+                passwordController: passwordController,
               ),
               Align(
                 alignment: AlignmentDirectional.centerEnd,
