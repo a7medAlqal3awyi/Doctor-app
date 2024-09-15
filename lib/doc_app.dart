@@ -20,19 +20,10 @@ class DocApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider(
-              create: (context) => LoginCubit(getIt.get<LoginRepoImpl>())),
-          BlocProvider(
-              create: (context) =>
-                  RegisterCubit(getIt.get<RegisterRepoImpl>())),
-        ],
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          initialRoute: Routes.onBoarding,
-          onGenerateRoute: appRouter.generateRoute,
-        ),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: Routes.onBoarding,
+        onGenerateRoute: appRouter.generateRoute,
       ),
     );
   }
