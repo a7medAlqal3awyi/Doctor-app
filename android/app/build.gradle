@@ -23,6 +23,21 @@ if (flutterVersionName == null) {
 }
 
 android {
+    flavorDimensions "default"
+    productFlavors {
+        production {
+            dimension = "default"
+            resValue "string", "app_name", "Doc Doc Production"
+        }
+
+        development {
+            dimension = "default"
+            applicationIdSuffix = ".dev"
+            resValue "string", "app_name", "Doc Doc Development"
+        }
+    }
+
+
     namespace "com.example.dooc_app"
     compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion

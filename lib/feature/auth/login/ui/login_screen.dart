@@ -1,12 +1,11 @@
 import 'package:dooc_app/core/helpers/spacing.dart';
 import 'package:dooc_app/core/themeing/styles.dart';
-import 'package:dooc_app/feature/login/ui/widgets/dont_have_an_account.dart';
-import 'package:dooc_app/feature/login/ui/widgets/email_and_password.dart';
-import 'package:dooc_app/feature/login/ui/widgets/terms_and_conditions.dart';
+import 'package:dooc_app/feature/auth/login/ui/widgets/dont_have_an_account.dart';
+import 'package:dooc_app/feature/auth/login/ui/widgets/email_and_password.dart';
+import 'package:dooc_app/feature/auth/login/ui/widgets/terms_and_conditions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/widget/app_button.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -14,6 +13,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
         body: SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -21,6 +21,7 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              verticalSpacing(20),
               Text(
                 "Welcome Back",
                 style: TextStyles.font24BlueW700,
@@ -31,18 +32,7 @@ class LoginScreen extends StatelessWidget {
                 style: TextStyles.font14GreyW400.copyWith(fontSize: 14.sp),
               ),
               const EmailAndPassword(),
-              Align(
-                alignment: AlignmentDirectional.centerEnd,
-                child: Text(
-                  "Forgot Password?",
-                  style: TextStyles.font13BlueW400,
-                ),
-              ),
-              verticalSpacing(40),
-              AppTextButton(
-                  onPressed: () {},
-                  buttonText: 'Login',
-                  buttonTextStyle: TextStyles.font16WhiteW600),
+
               verticalSpacing(16),
               const TermsAndConditions(),
               verticalSpacing(60),

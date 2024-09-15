@@ -23,12 +23,20 @@ class TextStyles {
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
     color: Colors.white,
+  );  static TextStyle font16BlackW700 = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.black,
   );
 
   static TextStyle font24BlueW700 = TextStyle(
     fontSize: 24.sp,
     fontWeight: FontWeight.w700,
     color: ColorManager.primary,
+  );static TextStyle font18BlackW700 = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w700,
+    color: Colors.black,
   );
   static TextStyle font14lightGreyW500 = TextStyle(
     fontSize: 14.sp,
@@ -44,6 +52,11 @@ class TextStyles {
     fontSize: 13.sp,
     fontWeight: FontWeight.w400,
     color: ColorManager.primary,
+  );
+  static TextStyle font12BlackW400 = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    color: Colors.black,
   );
 
   static TextStyle font14moreLighterGreyW400 = TextStyle(
