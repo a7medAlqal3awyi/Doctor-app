@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../feature/auth/login/ui/login_screen.dart';
 // import '../../feature/auth/register/ui/register_screen.dart';
 import '../../feature/auth/sign_up/ui/register_screen.dart';
-import '../../feature/home_screen.dart';
+import '../../feature/home/ui/home_screen.dart';
 import '../../feature/onboarding/onboarding_screen.dart';
 
 class AppRouter {
