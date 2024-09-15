@@ -1,11 +1,16 @@
 import 'package:dooc_app/core/helpers/spacing.dart';
 import 'package:dooc_app/core/themeing/app_colors.dart';
 import 'package:dooc_app/core/widget/app_button.dart';
+import 'package:dooc_app/feature/home/data/models/specialization_response.dart';
+import 'package:dooc_app/feature/home/logic/home_cubit.dart';
+import 'package:dooc_app/feature/home/logic/home_state.dart';
 import 'package:dooc_app/feature/home/ui/widgets/doctor_blue_container.dart';
 import 'package:dooc_app/feature/home/ui/widgets/doctor_list_view.dart';
 import 'package:dooc_app/feature/home/ui/widgets/doctor_speciality_list_view.dart';
 import 'package:dooc_app/feature/home/ui/widgets/home_tap_bar.dart';
+import 'package:dooc_app/feature/home/ui/widgets/specialization_and_doctor_blco_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -17,13 +22,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> docSpiclaist = [
-      "assets/svgs/home/general.svg",
-      "assets/svgs/home/notification.svg",
-      "assets/svgs/home/nuro.svg",
-      "assets/svgs/home/Pediatric.svg",
-      "assets/svgs/home/Radiology.svg",
-    ];
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -46,13 +44,13 @@ class HomeScreen extends StatelessWidget {
                 secondText: "See All",
               ),
               verticalSpacing(20),
-             const DoctorSpecialityListView(),
-              verticalSpacing(8),
-              const DoctorsListView(),
+              const SpecializationAndDoctorBlcoBuilder()
             ],
           ),
         ),
       ),
     );
   }
+
+
 }
