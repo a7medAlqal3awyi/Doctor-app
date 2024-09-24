@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:dooc_app/core/helpers/constatnts.dart';
+import 'package:dooc_app/core/helpers/shared_pref_helper.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import '../local_services/cache_helper.dart';
 import '../local_services/cache_keys.dart';
@@ -7,8 +9,13 @@ import 'endpoints.dart';
 class ApiService {
   final Dio _dio;
 
+   void setTokenIntoHeaderAfterLogin(String token) {
+    _dio.options.headers = {
+      'Authorization': 'Bearer $token',
+    };
+  }
   ApiService(this._dio) {
-    print("ApiService ${CacheHelper.getData(key: CacheKeysManger.tokenStatus())}");
+    print("ApiService ${CacheHelper.getSecuredString(CacheKeysManger.tokenStatus())}");
 
     // Initialize Dio settings and add PrettyDioLogger
     _initializeDio();
@@ -20,11 +27,12 @@ class ApiService {
       PrettyDioLogger(
         requestHeader: true,
         requestBody: true,
-        responseBody: true,
+        responseBody: false,
         responseHeader: false,
         compact: false,
         error: true,
-        logPrint: (object) => print(object), // Log output using print
+
+        // logPrint: (object) => print(object), // Log output using print
       ),
     );
 
@@ -43,7 +51,7 @@ class ApiService {
       "Content-Type": "application/json",
       "Accept-Language": CacheKeysManger.getUserLanguageFromCache(),
       if (sendToken)
-        "Authorization": "Bearer ${CacheHelper.getData(key: CacheKeysManger.tokenStatus())}"
+        "Authorization": "Bearer ${CacheHelper.getSecuredString(SharedPrefKeys.userToken)}"
     };
     var response = await _dio.post(
       "${EndPoints.baseUrl}$endPoint",
@@ -117,7 +125,8 @@ class ApiService {
     _dio.options.headers = {
       "accept": "*/*",
       "Content-Type": "application/json",
-      "Authorization": "Bearer ${CacheHelper.getData(key: CacheKeysManger.tokenStatus())}",
+      "Authorization":
+          "Bearer ${CacheHelper.getData(key: CacheKeysManger.tokenStatus())}",
       "Accept-Language": CacheKeysManger.getUserLanguageFromCache(),
     };
     var response = await _dio.put(

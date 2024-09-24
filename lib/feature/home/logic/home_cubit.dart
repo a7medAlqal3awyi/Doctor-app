@@ -9,11 +9,18 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this.repoImpl) : super(HomeInitial());
 
   void fetchSpecializations() async {
+    print('State: HomeSpecializationLoading');
+
     emit(HomeSpecializationLoading());
     final result = await repoImpl.getSpecializations();
-    result.fold(
-      (failure) => emit(HomeSpecializationError(failure.errMessage)),
-      (success) => emit(HomeSpecializationSuccess(success)),
-    );
+    result.fold((failure) {
+      print('State: HomeSpecializationError');
+
+      emit(HomeSpecializationError(failure.errMessage));
+    }, (success) {
+      print('State: HomeSpecializationSuccess');
+
+      emit(HomeSpecializationSuccess(success));
+    });
   }
 }

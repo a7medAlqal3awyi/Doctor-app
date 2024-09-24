@@ -41,7 +41,7 @@ class OnBoardingScreen extends StatelessWidget {
                       verticalSpacing(40),
                       GetStartedButton(
                         onTap: () {
-                          context.pushNamed(Routes.homeScreen);
+                          context.pushNamed(Routes.loginScreen);
                         },
                       ),
                     ],
