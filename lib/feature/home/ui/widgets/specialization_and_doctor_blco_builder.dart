@@ -14,6 +14,8 @@ class SpecializationAndDoctorBlcoBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
+        print('Current state: $state');  // Track state transitions
+
         if (state is HomeInitial) {
           return setUpLoading();
         }
@@ -42,6 +44,7 @@ Widget setUpError() {
 }
 
 Widget setUpSuccess(model) {
+
   return Expanded(
     child: Column(
       children: [

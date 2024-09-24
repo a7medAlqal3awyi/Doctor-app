@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'core/helpers/constatnts.dart';
 import 'core/routing/routes.dart';
 import 'core/service/remote_services/service_locator.dart';
 import 'feature/auth/login/data/repo/login_repo_impl.dart';
@@ -22,7 +23,7 @@ class DocApp extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.onBoarding,
+        initialRoute: isLoggedInUser ? Routes.homeScreen : Routes.loginScreen,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );
